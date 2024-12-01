@@ -17,4 +17,10 @@ from typing import Tuple
 
 
 def find_maximum_and_minimum(file_name: str) -> Tuple[int, int]:
-    ...
+    mn, mx = 1e15, -1e15
+    with open(file_name, "r") as fi:
+        for line in fi:
+            mn = min(mn, int(line))
+            mx = max(mx, int(line))
+    ans = (mn, mx)
+    return ans
