@@ -22,4 +22,13 @@ from typing import Callable
 
 
 def cache(func: Callable) -> Callable:
-    ...
+    used_parameters = {}
+
+    def cache_func(*args, **kwargs):
+        parameters = args + tuple(kwargs.keys()) + tuple(kwargs.values())
+        if parameters not in used_parameters:
+            used_parameters[parameters] = func(*args, **kwargs)
+
+        return used_parameters[parameters]
+
+    return cache_func

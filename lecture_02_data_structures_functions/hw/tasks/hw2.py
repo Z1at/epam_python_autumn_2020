@@ -21,4 +21,28 @@ from typing import List, Tuple
 
 
 def major_and_minor_elem(inp: List) -> Tuple[int, int]:
-    ...
+    # Moore voting method: Boyer Moore voting algorithm
+    mx = None
+    count = 0
+    for i in inp:
+        if count == 0:
+            mx = i
+        elif mx != i:
+            count -= 1
+        else:
+            count += 1
+
+    voc = {}
+    for i in inp:
+        if i not in voc:
+            voc[i] = 1
+        else:
+            voc[i] += 1
+
+    mn = [1e15, 0]
+    for i in voc:
+        if voc[i] < mn[0]:
+            mn[0] = voc[i]
+            mn[1] = i
+
+    return mx, mn[1]

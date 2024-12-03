@@ -18,4 +18,21 @@ from typing import List, Any
 
 
 def combinations(*args: List[Any]) -> List[List]:
-    ...
+    ans = []
+    ln = len(args)
+    pos = [0 for i in range(ln)]
+    while pos[0] != len(args[0]):
+        res = []
+        for ind, value in enumerate(pos):
+            res.append(args[ind][value])
+
+        for i in range(ln - 1, -1, -1):
+            pos[i] += 1
+            if pos[i] == len(args[i]) and i != 0:
+                pos[i] = 0
+            else:
+                break
+
+        ans.append(res)
+
+    return ans
