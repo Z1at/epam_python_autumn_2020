@@ -10,6 +10,7 @@ from typing import List
 from typing import Dict
 
 
+
 def get_longest_diverse_words(file_path: str) -> List[str]:
     ...
 
