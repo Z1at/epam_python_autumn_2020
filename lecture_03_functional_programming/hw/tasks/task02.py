@@ -30,6 +30,7 @@ def basic():
     return ans
 
 
+# Неправильно работает
 def some_threads():
     ans = 0
     for i in range(501):

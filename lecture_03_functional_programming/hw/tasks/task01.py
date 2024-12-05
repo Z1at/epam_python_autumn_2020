@@ -73,33 +73,54 @@ from typing import Callable
 
 # Если мы хотим декоратор с параметрами, то нужно писать три функции
 # Если мы хотим декоратор без параметров, то будет достаточно двух
+# В этой реализации мы не используем хеширование
+# def cache(times=0):
+#     def cache_decorator(func):
+#         value = times
+#         ans = ""
+#
+#         def wrapper(*args, **kwargs):
+#             nonlocal value, ans
+#             if value == times:
+#                 ans = func(*args, **kwargs)
+#             elif value == 0:
+#                 value = times + 1
+#             value -= 1
+#             return ans
+#
+#         return wrapper
+#
+#     return cache_decorator
+
+
+# Реализуем декоратор с хэшированием
 def cache(times=0):
     def cache_decorator(func):
-        value = times
-        ans = ""
+        used = {}
 
         def wrapper(*args, **kwargs):
-            nonlocal value, ans
-            if value == times:
-                ans = func(*args, **kwargs)
-            elif value == 0:
-                value = times + 1
-            value -= 1
-            return ans
+            key = args + tuple(kwargs.items())
+            if key not in used:
+                used[key] = [func(*args, **kwargs), times]
+            else:
+                if used[key][1] == -1:
+                    used[key] = [func(*args, **kwargs), times]
+                else:
+                    used[key][1] -= 1
 
+            return used[key][0]
         return wrapper
-
     return cache_decorator
-
 
 # @cache(2)
 # def f():
 #     return input("? ")
 
 
-# @cache(3)
-# def sm(a, b, c):
-#     return a + b + c
+@cache(3)
+def sm(a, b, c):
+    return a + b + c
+
 
 # cached_func = cache(2)(f)
 
@@ -113,9 +134,9 @@ def cache(times=0):
 #     print(f())
 
 
-# while True:
-#     a, b, c = map(int, input().split())
-#     print(sm(a, b, c))
+while True:
+    a, b, c = map(int, input().split())
+    print(sm(a, b, c))
 
 # print(cached_func())
 # print(cached_func())
