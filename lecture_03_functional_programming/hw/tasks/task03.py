@@ -31,7 +31,7 @@ def make_filter(**keywords):
     return Filter(filter_funcs)
 
 
-sample_data  =  [
+sample_data = [
      {
          "name": "Bill",
          "last_name": "Gilbert",

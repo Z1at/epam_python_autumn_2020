@@ -19,7 +19,12 @@ Write a function that detects if a number is Armstrong number in functionaly sty
 
 
 def is_armstrong(number: int) -> bool:
-    ...
+    ln = len(str(number))
+    return sum(map(check_numbers, str(number), [ln] * ln)) == number
+
+
+def check_numbers(number, ln):
+    return int(number) ** ln
 
 
 assert is_armstrong(153) is True, 'Is Armstrong number'
