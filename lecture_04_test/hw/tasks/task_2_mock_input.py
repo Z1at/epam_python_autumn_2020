@@ -26,7 +26,16 @@ You will learn:
 
 * https://docs.python.org/3/library/urllib.request.html#urllib.request.urlopen
 """
+from urllib.request import urlopen
 
 
 def count_dots_on_i(url: str) -> int:
-    ...
+    ans = 0
+    with urlopen(url) as response:
+        for i in response.readlines():
+            ans += str(i).count("i")
+    return ans
+
+
+count_dots_on_i("https://example.com/")
+

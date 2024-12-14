@@ -29,4 +29,12 @@ You will learn:
 
 
 def read_magic_number(path: str) -> bool:
-    ...
+    with open(path, "r") as f:
+        first_line = f.readline()
+
+        try:
+            return 1 <= float(first_line) < 3
+        except ValueError:
+            raise ValueError("A number is required.")
+
+
