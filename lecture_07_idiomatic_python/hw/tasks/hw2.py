@@ -17,8 +17,28 @@ Examples:
     Output: False
     Explanation: s becomes "c" while t becomes "b".
 
+
+>>> backspace_compare("ab#c", "ad#c")
+True
+>>> backspace_compare("a##c", "#a#c")
+True
+>>> backspace_compare("a#c", "b")
+False
 """
 
 
+def get_result(string):
+    stack = []
+    for i in string:
+        if i == "#":
+            if stack:
+                stack.pop()
+        else:
+            stack.append(i)
+    return stack
+
+
 def backspace_compare(first: str, second: str):
-    ...
+    return get_result(first) == get_result(second)
+
+
