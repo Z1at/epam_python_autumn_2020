@@ -1,0 +1,11 @@
+![img.png](imgs_oop/img.png)
+![img_1.png](imgs_oop/img_1.png)
+![img_2.png](imgs_oop/img_2.png)
+![img_3.png](imgs_oop/img_3.png)
+![img_4.png](imgs_oop/img_4.png)
+![img_5.png](imgs_oop/img_5.png)
+![img_6.png](imgs_oop/img_6.png)
+![img_7.png](imgs_oop/img_7.png)
+Для решения этой проблемы мы можем использовать \_\_mro__
+![img_8.png](imgs_oop/img_8.png)
+![img_9.png](imgs_oop/img_9.png)
