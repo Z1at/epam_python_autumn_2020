@@ -33,3 +33,5 @@ class SizesEnum(metaclass=SimplifiedEnum):
 assert ColorsEnum.RED == "RED"
 assert SizesEnum.XL == "XL"
 """
+
+
