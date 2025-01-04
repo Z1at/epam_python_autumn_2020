@@ -9,7 +9,7 @@ Definition of done:
  - doctests are run with pytest command
 
 You will learn:
- - the most common test task for developers
+ - the most common test tasks for developers
  - how to write doctests
  - how to run doctests
 
